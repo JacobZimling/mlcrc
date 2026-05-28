@@ -1,8 +1,8 @@
 DROP VIEW IF EXISTS w_driver_times;
 create view w_driver_times as
-SELECT t.race_identifier, d.driver_id, t.race_time
+SELECT t.race_identifier, d.driver_id, t.race_time_dt
                 FROM (
-                    SELECT distinct race_identifier, race_time
+                    SELECT distinct race_identifier, race_time_dt
                         FROM race_laps as rl
                     	join w_race_identifier as wri
 							ON rl.race_id=wri.race_id

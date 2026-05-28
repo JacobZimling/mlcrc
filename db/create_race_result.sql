@@ -1,0 +1,43 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.3
+-- https://www.phpmyadmin.net/
+--
+-- Vært: localhost:3306
+-- Genereringstid: 27. 05 2026 kl. 17:02:12
+-- Serverversion: 12.2.2-MariaDB-log
+-- PHP-version: 8.4.20
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `jacobzimling_mlcrc`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `race_result`
+--
+
+CREATE TABLE `race_result` (
+  `result_identifier` varchar(150) NOT NULL,
+  `rank` int(11) NOT NULL,
+  `driver_name` varchar(50) NOT NULL,
+  `race_time_dt` datetime NOT NULL,
+  `lap` int(11) NOT NULL,
+  `point` int(11) NOT NULL,
+  `DNF_DSQ` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
