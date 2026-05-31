@@ -31,7 +31,7 @@ CREATE TABLE `race_result` (
   `result_identifier` varchar(150) NOT NULL,
   `rank` int(11) NOT NULL,
   `driver_name` varchar(50) NOT NULL,
-  `race_time_dt` datetime NOT NULL,
+  `race_time_dt` datetime(3) NOT NULL,
   `lap` int(11) NOT NULL,
   `point` int(11) NOT NULL,
   `DNF_DSQ` varchar(3) NOT NULL
