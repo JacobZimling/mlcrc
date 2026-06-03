@@ -21,7 +21,7 @@ from sqlalchemy.sql import text
   #   return self.conn.query('SELECT distinct year(race_date) as race_year FROM race_info')
 
 def db_connect():
-  return st.connection('nordicway', type='sql')
+  return st.connection('heliohost', type='sql')
 
 # def get_race_years(conn):
 #   return conn.query('SELECT distinct year(race_date) as race_year FROM race_info')
