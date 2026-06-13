@@ -10,7 +10,7 @@ else:
 # Initialize DB connection.
 conn = race.db_connect()
 
-# Read race information for exlect boxes from DB
+# Read race information for select boxes from DB
 races = race.get_race_info(conn)
 
 # Select year
@@ -73,7 +73,7 @@ if race_year:
             on_select = "rerun"
         else:
             race_result = race.get_race_result_aggr(conn, race_year, race_type)
-            columns = ('rank', 'driver_name', 'point')
+            columns = ('rank', 'driver_name', 'starts', 'point')
             on_select = "ignore"
 
         race_result['point'] = race_result['point'].astype(str)
@@ -89,6 +89,7 @@ if race_year:
             column_config={
                 "rank": st.column_config.NumberColumn("Placering"),
                 "driver_name": st.column_config.TextColumn("Kører"),
+                "starts": st.column_config.NumberColumn("Antal starter"),
                 "race_time_dt": st.column_config.TimeColumn("Total tid", format='m:ss.SSS'),
                 "lap": st.column_config.NumberColumn("Omgange"),
                 "point": st.column_config.TextColumn("Point", alignment="right"),

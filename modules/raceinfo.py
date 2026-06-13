@@ -167,7 +167,7 @@ def get_race_result_aggr(conn, *args):
 	conn.reset()
 	result_identifier = get_result_identifier(args)
 	result_identifier = '¤'.join(list(map(str, args)))
-	query = f'SELECT result_identifier, rank, driver_name, race_time_dt, lap, point, DNF_DSQ FROM race_result WHERE result_identifier="{result_identifier}" ORDER BY point DESC;'
+	query = f'SELECT result_identifier, rank, driver_name, starts, race_time_dt, lap, point, DNF_DSQ FROM race_result WHERE result_identifier="{result_identifier}" ORDER BY point DESC;'
 	#st.write(query)
 	race_result = conn.query(query, ttl=0)
 	return race_result
@@ -233,6 +233,7 @@ def update_race_result_data(conn, race_year):
 							result_identifier,
 							rank,
 							driver_name,
+							starts,
 							race_time_dt,
 							lap,
 							point,
@@ -352,6 +353,7 @@ def update_race_result_data(conn, race_year):
 									ORDER BY race_identifier, point DESC
 								) as rank,
 								driver_name,
+								count(*) as starts,
 								NULL as race_time_dt,
 								NULL as lap,
 								sum(result_point) as point,
@@ -367,6 +369,7 @@ def update_race_result_data(conn, race_year):
 									ORDER BY race_identifier, point DESC
 								) as rank,
 								driver_name,
+								NULL as starts,
 								NULL as race_time_dt,
 								NULL as lap,
 								sum(result_point) as point,
@@ -382,6 +385,7 @@ def update_race_result_data(conn, race_year):
 									ORDER BY race_identifier, lap DESC, point DESC, DNF_DSQ
 								) as rank,
 								driver_name,
+								NULL as starts,
 								race_time_dt,
 								lap,
 								result_point as point,
@@ -394,6 +398,7 @@ def update_race_result_data(conn, race_year):
 							race_identifier,
 							rank,
 							driver_name,
+							starts,
 							race_time_dt,
 							lap,
 							point,

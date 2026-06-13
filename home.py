@@ -16,6 +16,11 @@ if st.session_state.logged_in:
             url_path="Aggregated_results?mode=DSQ",
         ),
         st.Page(
+            "pages/9_recalculate_results.py",
+            title="Genberegn resultater",
+            url_path="recalculate_results",
+        ),
+        st.Page(
             "logout.py",
             title="Log ud",
         )
