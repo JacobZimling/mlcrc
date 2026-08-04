@@ -15,7 +15,7 @@ def main():
         page.goto(APP_URL, wait_until="networkidle")
         
         # Check if the "Wake up app" button is visible
-        wake_button = page.get_by_role("button", name="Wake up app")
+        wake_button = page.get_by_role("button", name="Yes, get this app back up!")
         
         if wake_button.is_visible():
             print("App is asleep! Clicking the 'Wake up app' button...")
