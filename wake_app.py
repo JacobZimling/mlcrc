@@ -2,7 +2,7 @@ import sys
 from playwright.sync_api import sync_playwright
 
 # Replace with your actual Streamlit Community Cloud URL
-APP_URL = "https://streamlit.app"
+APP_URL = "https://mlcrc-racing.streamlit.app"
 
 def main():
     print(sys.version)
