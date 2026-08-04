@@ -44,6 +44,11 @@ pg = st.navigation({
         "pages/3_Race_graph.py",
         title="Race graf"
     ),
+    st.Page(
+        "pages/10_fastest_laps.py",
+        title="Hurtigste omgangstider",
+        url_path="fastest_laps",
+    ),
 ],
 "Administration": admin_pages})
 pg.run()

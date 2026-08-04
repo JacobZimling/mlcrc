@@ -167,7 +167,7 @@ def get_race_result_aggr(conn, *args):
 	conn.reset()
 	result_identifier = get_result_identifier(args)
 	result_identifier = '¤'.join(list(map(str, args)))
-	query = f'SELECT result_identifier, rank, driver_name, starts, race_time_dt, lap, point, DNF_DSQ FROM race_result WHERE result_identifier="{result_identifier}" ORDER BY point DESC;'
+	query = f'SELECT result_identifier, rank, driver_name, starts, race_time_dt, lap, point, DNF_DSQ, point/starts as pts_pr_start FROM race_result WHERE result_identifier="{result_identifier}" ORDER BY point DESC;'
 	#st.write(query)
 	race_result = conn.query(query, ttl=0)
 	return race_result
@@ -193,6 +193,25 @@ def get_lap_times(conn, race_identifier, driver_name):
     #st.write(query)
     lap_times = conn.query(query, ttl=0)
     return lap_times
+
+def get_fastes_laps(conn, year_type_date):
+    query = f'''SELECT 
+                     ROW_NUMBER() OVER(
+                        ORDER BY wfl.lap_time_dt
+                     ) as rank
+                    ,wfl.driver_id
+                    ,wfl.driver_name
+                    ,wfl.lap_time_dt
+                    ,wfl.race_name
+                    ,lap
+                    FROM w_fastes_laps wfl
+                    WHERE wfl.year_type_date='{year_type_date}'
+                    ORDER BY 
+                        wfl.lap_time_dt
+			;'''
+    #st.write(query)
+    fastes_laps = conn.query(query, ttl=0)
+    return fastes_laps
 
 def get_all_races_driver(conn, race_identifier, driver_name):
     query = f'''
