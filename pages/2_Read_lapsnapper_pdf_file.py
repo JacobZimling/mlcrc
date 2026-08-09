@@ -11,8 +11,8 @@ file = st.file_uploader("Upload a PDF file", type="pdf")
 
 if file is not None:
     # Initialize DB connection.
-    conn = st.connection('heliohost', type='sql')
-    
+    conn = race.db_connect()
+
     with st.spinner('Reading race information...', show_time=True):
         # Read the PDF file
         pdf_reader = PdfReader(file)
